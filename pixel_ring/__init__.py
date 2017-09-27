@@ -40,6 +40,8 @@ class PixelRing(object):
     def think(self):
         self.put(self.pattern.think)
 
+    wait = think
+
     def speak(self):
         self.put(self.pattern.speak)
 
