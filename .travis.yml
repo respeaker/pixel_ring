@@ -1,0 +1,22 @@
+deploy:
+  true:
+    branch: master
+    python: 2.7
+    tags: true
+  distributions: sdist bdist_wheel
+  password:
+    secure: PC3sfhQwHlYP/9bTif1S+H1xIar9B+X0e5DD+xW3N9RIXAK7fdtoMDNqVOlpeSGHV2o1P3mwC5jtcZOFyrncnOtobtej2k/Ps1QF8yzFmyv/VOqYqovDOt46Z9mHg0Jl6mGf9ETxotBjaO5iXERtWYY0YmvZDQr0SerCzDTSzTx7bGmi/YLlHixnHGpv56gcPQqTyZpHvh6V7fvt+Kd97c9ItdumhjxmS+zMUJFjqd9x0ddgTd1ucNYllSxtix96xlJGdztqdXlHbxugAeM+Po79hq124Y3Ey1xd91t/EX3h4hx7qZOiadUPV6pR4WsdziTdeD5nZW5tIs4dXvW3oFSQJTO6BQ9L+38KPvidNVaiXSxcsb9yoOm3StbMCCrGwwCR/p4UXmcVA/ci58LwQ9Lz4A8dyZhrIp4kWDQDq9t6YwhQWJEpiah4/A8WltQJmmkJpFLYd6qOvcbIxZvEf1vzdSZedqDz2oB3guYiDkqobILe2uppq0PFEsbbcud6pQUy6MBvk47j+RfanggmUini6AFVFHh01GLGr+Frx+MqiwkunW8HllZFu3CiHbQ6TgMJ/sE41ZUbx2twIdT0BXcvu76YGsApVllt5LWUqSHypYpDIFFdLzRXoqiLg52CkXhAr/l9XsC4In9e9qmqGu4+u1KCjUiaZUipSvtOquc=
+  provider: pypi
+  user: yihui
+install:
+- pip install -r requirements.txt
+- python setup.py bdist_wheel
+- pip install ./dist/*.whl
+language: python
+python:
+- '2.6'
+- '2.7'
+- '3.4'
+- '3.5'
+- '3.6'
+script: pytest
