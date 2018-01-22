@@ -7,12 +7,14 @@ from setuptools import setup, find_packages
 
 README = \
 '''
-APA102 pixel ring
+RGB LED library for ReSpeaker USB 6+1 Microphone Array, 4 Mic Array for Raspberry Pi
+to control the pixel ring
 '''
 
 
 requirements = [
-    'spidev'
+    'spidev',
+    'pyusb'
 ]
 
 setup_requirements = [
@@ -25,7 +27,7 @@ test_requirements = [
 
 setup(
     name='pixel-ring',
-    version='0.0.1',
+    version='0.0.2',
     description="APA 102 pixel ring",
     long_description=README,
     author="Yihui Xiong",

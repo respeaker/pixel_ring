@@ -7,7 +7,6 @@ pip install pixel_ring gpiozero
 import time
 
 from pixel_ring import pixel_ring
-from pixel_ring.echo import Pattern
 from gpiozero import LED
 
 
@@ -15,7 +14,7 @@ if __name__ == '__main__':
     power = LED(5)
     power.on()
 
-    pixel_ring.change_pattern(Pattern)
+    pixel_ring.change_pattern('echo')
     while True:
 
         try:

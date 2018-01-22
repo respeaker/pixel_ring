@@ -7,8 +7,8 @@ import time
 
 
 class Pattern(object):
-    def __init__(self, show=None):
-        self.basis = numpy.array([0] * 4 * 12)
+    def __init__(self, show):
+        self.basis = [0] * 4 * 12
         self.basis[0 * 4 + 1] = 2
         self.basis[3 * 4 + 1] = 1
         self.basis[3 * 4 + 2] = 1
@@ -17,10 +17,8 @@ class Pattern(object):
 
         self.pixels = self.basis * 24
 
-        if not show or not callable(show):
-            def dummy(data):
-                pass
-            show = dummy
+        if not callable(show):
+            raise ValueError('show parameter is not callable')
 
         self.show = show
         self.stop = False
@@ -28,19 +26,20 @@ class Pattern(object):
     def wakeup(self, direction=0):
         position = int((direction + 15) / 30) % 12
 
-        basis = numpy.roll(self.basis, position * 4)
+        basis = self.basis[position*4:] + self.basis[:position*4]
         for i in range(1, 25):
-            pixels = basis * i
+            pixels = [v * i for v in basis]
             self.show(pixels)
             time.sleep(0.005)
 
-        pixels =  numpy.roll(pixels, 4)
+        pixels =  pixels[4:] + pixels[:4]
         self.show(pixels)
         time.sleep(0.1)
 
         for i in range(2):
-            new_pixels = numpy.roll(pixels, 4)
-            self.show(new_pixels * 0.5 + pixels)
+            new_pixels = pixels[4:] + pixels[:4]
+            
+            self.show([v/2+pixels[index] for index, v in enumerate(new_pixels)])
             pixels = new_pixels
             time.sleep(0.1)
 
@@ -50,21 +49,21 @@ class Pattern(object):
     def listen(self):
         pixels = self.pixels
         for i in range(1, 25):
-            self.show(pixels * i / 24)
+            self.show([(v * i / 24) for v in pixels])
             time.sleep(0.01)
 
     def think(self):
         pixels = self.pixels
 
         while not self.stop:
-            pixels = numpy.roll(pixels, 4)
+            pixels = pixels[4:] + pixels[:4]
             self.show(pixels)
             time.sleep(0.2)
 
         t = 0.1
         for i in range(0, 5):
-            pixels = numpy.roll(pixels, 4)
-            self.show(pixels * (4 - i) / 4)
+            pixels = pixels[4:] + pixels[:4]
+            self.show([(v * (4 - i) / 4) for v in pixels])
             time.sleep(t)
             t /= 2
 
@@ -75,7 +74,7 @@ class Pattern(object):
         step = 1
         brightness = 5
         while not self.stop:
-            self.show(pixels * brightness / 24)
+            self.show([(v * brightness / 24) for v in pixels])
             time.sleep(0.02)
 
             if brightness <= 5:

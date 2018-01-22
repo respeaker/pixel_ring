@@ -120,11 +120,7 @@ class UsbPixelRing:
         return position
 
     def listen(self, angle=0):
-        colors = [0, 0x10, 0, 0] * self.PIXELS_N
-
-        self.write(0, [self.CUSTOM, 0, 0, 0])
-        self.write(3, colors)
-
+        self.write(0, [self.MONO, 0, 0x10, 0])
 
     @staticmethod
     def to_bytearray(data):
