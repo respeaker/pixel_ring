@@ -11,6 +11,7 @@ The library is for pixel ring based on APA102, ReSpeaker series pixel ring.
 + ReSpeaker 4 Mic Array or ReSpeaker V2
 + ReSpeaker V2
 + ReSpeaker USB 6+1 Mic Array
++ ReSpeaker USB 4 Mic Array
 
 ## Get started
 ```
