@@ -5,17 +5,18 @@ Pixel Ring
 [![Pypi](https://img.shields.io/pypi/v/pixel-ring.svg)](https://pypi.python.org/pypi/pixel-ring)
 
 
-The library is for pixel ring based on APA102
+The library is for pixel ring based on APA102, ReSpeaker series pixel ring.
 
 ## Hardware
-ReSpeaker 4 Mic Array or ReSpeaker V2
++ ReSpeaker 4 Mic Array or ReSpeaker V2
++ ReSpeaker V2
++ ReSpeaker USB 6+1 Mic Array
 
 ## Get started
 ```
 git clone --depth 1 https://github.com/respeaker/pixel_ring.git
 cd pixel_ring
-sudo pip install .
-sudo apt install python-numpy
+pip install -U -e .
 python examples/respeaker_4mic_array.py
 ```
 
