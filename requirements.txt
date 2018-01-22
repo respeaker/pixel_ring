@@ -1,2 +1,2 @@
 spidev
-numpy
+pyusb
