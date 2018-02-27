@@ -9,8 +9,8 @@ pixel_ring = usb_pixel_ring_v2.find()
 if not pixel_ring:
     pixel_ring = usb_pixel_ring_v1.find()
 
-# if not pixel_ring:
-#     pixel_ring = PixelRing()
+if not pixel_ring:
+    pixel_ring = PixelRing()
 
 
 USAGE = '''
@@ -44,6 +44,7 @@ def main():
     pixel_ring.think()
     time.sleep(3)
     pixel_ring.off()
+    time.sleep(1)
 
 
 if __name__ == '__main__':
