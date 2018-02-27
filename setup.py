@@ -27,7 +27,7 @@ test_requirements = [
 
 setup(
     name='pixel-ring',
-    version='0.0.3',
+    version='0.0.4',
     description="respeaker series pixel ring library",
     long_description=README,
     author="Yihui Xiong",
@@ -38,6 +38,7 @@ setup(
     install_requires=requirements,
     entry_points={
         'console_scripts': [
+            'pixel_ring_check=pixel_ring.__init__:main'
         ],
     },
     license="GNU General Public License v2",
