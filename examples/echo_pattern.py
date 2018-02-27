@@ -14,6 +14,7 @@ if __name__ == '__main__':
     power = LED(5)
     power.on()
 
+    pixel_ring.set_brightness(20)
     pixel_ring.change_pattern('echo')
     while True:
 

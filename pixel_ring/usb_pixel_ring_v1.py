@@ -85,6 +85,9 @@ class UsbPixelRing:
 
         self.direction_template = colors
 
+    def set_brightness(self, brightness):
+        print('Not support to change brightness')
+
     def change_pattern(self, pattern=None):
         print('Not support to change pattern')
 

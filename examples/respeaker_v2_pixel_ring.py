@@ -19,6 +19,7 @@ if os.geteuid() != 0 :
 en.dir(mraa.DIR_OUT)
 en.write(0)
 
+pixel_ring.set_brightness(20)
 
 if __name__ == '__main__':
     while True:

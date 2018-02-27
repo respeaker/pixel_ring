@@ -27,6 +27,13 @@ class PixelRing(object):
         self.thread.start()
         self.off()
 
+    def set_brightness(self, brightness):
+        if brightness > 100:
+            brightness = 100
+
+        if brightness > 0:
+            self.dev.global_brightness = int(0b11111 * brightness / 100)
+
     def change_pattern(self, pattern):
         if pattern == 'echo':
             self.pattern = Echo(show=self.show)
