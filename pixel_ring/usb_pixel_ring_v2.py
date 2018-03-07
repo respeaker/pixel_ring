@@ -64,7 +64,7 @@ class PixelRing:
     def version(self):
         return self.dev.ctrl_transfer(
             usb.util.CTRL_IN | usb.util.CTRL_TYPE_VENDOR | usb.util.CTRL_RECIPIENT_DEVICE,
-            0, 0x80, 0, 1, self.TIMEOUT)
+            0, 0x80 | 0x40, 0x1C, 24, self.TIMEOUT).tostring()
 
     def close(self):
         """
@@ -95,6 +95,7 @@ if __name__ == '__main__':
     import time
 
     pixel_ring = find()
+    print(pixel_ring.version)
     while True:
         try:
             pixel_ring.wakeup(180)
