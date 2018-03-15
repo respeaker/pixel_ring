@@ -77,20 +77,20 @@ class GoogleHome(object):
         self.stop = False
 
     def wakeup(self, direction=0):
-        position = int((direction + 15) / 30) % 12
+        position = int((direction + 90 + 15) / 30) % 12
 
-        basis = self.basis[position*4:] + self.basis[:position*4]
-        for i in range(1, 25):
-            pixels = [v * i for v in basis]
-            self.show(pixels)
-            time.sleep(0.005)
+        basis = self.basis[position*-4:] + self.basis[:position*-4]
+        
+        pixels = [v * 25 for v in basis]
+        self.show(pixels)
+        time.sleep(0.1)
 
-        pixels =  pixels[4:] + pixels[:4]
+        pixels =  pixels[-4:] + pixels[:-4]
         self.show(pixels)
         time.sleep(0.1)
 
         for i in range(2):
-            new_pixels = pixels[4:] + pixels[:4]
+            new_pixels = pixels[-4:] + pixels[:-4]
             
             self.show([v/2+pixels[index] for index, v in enumerate(new_pixels)])
             pixels = new_pixels
@@ -109,13 +109,13 @@ class GoogleHome(object):
         pixels = self.pixels
 
         while not self.stop:
-            pixels = pixels[4:] + pixels[:4]
+            pixels = pixels[-4:] + pixels[:-4]
             self.show(pixels)
             time.sleep(0.2)
 
         t = 0.1
         for i in range(0, 5):
-            pixels = pixels[4:] + pixels[:4]
+            pixels = pixels[-4:] + pixels[:-4]
             self.show([(v * (4 - i) / 4) for v in pixels])
             time.sleep(t)
             t /= 2
