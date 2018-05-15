@@ -2,7 +2,7 @@ Pixel Ring
 ==========
 
 [![Build Status](https://travis-ci.org/respeaker/pixel_ring.svg?branch=master)](https://travis-ci.org/respeaker/pixel_ring)
-[![Pypi](https://img.shields.io/pypi/v/pixel-ring.svg)](https://pypi.python.org/pypi/pixel-ring)
+[![Pypi](https://img.shields.io/pypi/v/pixel_ring.svg)](https://pypi.python.org/pypi/pixel_ring)
 
 
 The library is for pixel ring based on APA102, ReSpeaker series pixel ring.
