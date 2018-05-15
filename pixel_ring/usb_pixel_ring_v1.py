@@ -125,6 +125,10 @@ class UsbPixelRing:
     def listen(self, angle=0):
         self.write(0, [self.MONO, 0, 0x10, 0])
 
+    def show(self, data):
+        self.write(0, [self.CUSTOM, 0, 0, 0])
+        self.write(3, data)
+
     @staticmethod
     def to_bytearray(data):
         if type(data) is int:
