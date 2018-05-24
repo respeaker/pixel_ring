@@ -27,7 +27,7 @@ test_requirements = [
 
 setup(
     name='pixel-ring',
-    version='0.0.6',
+    version='0.1.0',
     description="respeaker series pixel ring library",
     long_description=README,
     author="Yihui Xiong",
