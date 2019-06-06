@@ -57,22 +57,13 @@ class PixelRing:
     def set_volume(self, volume):
         self.write(0x23, [volume])
 
-    def change_pattern(self, pattern):
-        if pattern == 'echo':
-            self.write(0x24, [1])
-        else:
-            self.write(0x24, [0])
+    def change_pattern(self, pattern=None):
+        print('Not support to change pattern')
 
     def write(self, cmd, data=[0]):
         self.dev.ctrl_transfer(
             usb.util.CTRL_OUT | usb.util.CTRL_TYPE_VENDOR | usb.util.CTRL_RECIPIENT_DEVICE,
             0, cmd, 0x1C, data, self.TIMEOUT)
-
-    @property
-    def version(self):
-        return self.dev.ctrl_transfer(
-            usb.util.CTRL_IN | usb.util.CTRL_TYPE_VENDOR | usb.util.CTRL_RECIPIENT_DEVICE,
-            0, 0x80 | 0x40, 0x1C, 24, self.TIMEOUT).tostring()
 
     def close(self):
         """
@@ -103,7 +94,7 @@ if __name__ == '__main__':
     import time
 
     pixel_ring = find()
-    print(pixel_ring.version)
+
     while True:
         try:
             pixel_ring.wakeup(180)
