@@ -18,7 +18,7 @@ If the hardware is ReSpeaker 4 Mic Array for Pi or ReSpeaker V2,
 there is a power-enable pin which should be enabled at first.
 + ReSpeaker 4 Mic Array for Pi:
 
-    import gpiozero
+    from gpiozero import LED
     power = LED(5)
     power.on()
 
